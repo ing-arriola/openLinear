@@ -15,10 +15,21 @@ type Props = {
 
 export const UIProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
+
+  const openSideDrawer = () => {
+    dispatch({ type: 'UI-Open-SideDrawer' });
+  };
+
+  const closeSideDrawer = () => {
+    dispatch({ type: 'UI-Close-SideDrawer' });
+  };
+
   return (
     <UIContext.Provider
       value={{
-        sideDrawerOpen: false,
+        ...state,
+        openSideDrawer,
+        closeSideDrawer,
       }}
     >
       {children}

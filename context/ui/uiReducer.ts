@@ -1,21 +1,20 @@
 import { UIState } from "./"
 
-type UIActionType = | {type:'UI-Open-SideDrawew'} | {type:'UI-Close-SideDrawew'}
+type UIActionType = | {type:'UI-Open-SideDrawer'} | {type:'UI-Close-SideDrawer'}
 
-export const uiReducer = (state:UIState, action:UIActionType) => {
+export const uiReducer = (state:UIState, action:UIActionType) : UIState=> {
     switch (action.type) {
-        case 'UI-Open-SideDrawew':
+        case 'UI-Open-SideDrawer':
             return{
                 ...state,
                 sideDrawerOpen:true
             }
-        case 'UI-Close-SideDrawew':
+        case 'UI-Close-SideDrawer':
             return{
                 ...state,
                 sideDrawerOpen:false
             }
-    
         default:
-            state;
+            return state;
     }    
 }

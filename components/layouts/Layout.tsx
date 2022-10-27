@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Box } from '@mui/material';
-import { Navbar } from '../ui';
+import { Navbar, SideDrawer } from '../ui';
 
 interface LayoutProps {
   title?: string;
@@ -14,6 +14,7 @@ export const Layout = ({ children, title = 'Dynamic Tasks' }: LayoutProps) => {
         <title>{title}</title>
       </Head>
       <Navbar />
+      <SideDrawer />
       <Box sx={{ padding: '10px 20px' }}>{children}</Box>
     </Box>
   );
