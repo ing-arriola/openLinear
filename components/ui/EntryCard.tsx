@@ -1,3 +1,4 @@
+import { DragEvent, useContext } from 'react';
 import {
   Card,
   CardActionArea,
@@ -5,16 +6,30 @@ import {
   CardContent,
   Typography,
 } from '@mui/material';
-import React from 'react';
 import { Entry } from '../../interfaces';
+import { UIContext } from '../../context/ui/UIContext';
 
 interface EntryCardProps {
   entry: Entry;
 }
 
 export const EntryCard = ({ entry }: EntryCardProps) => {
+  const { onDragStated, onDragEnded } = useContext(UIContext);
+  const onDragStart = (event: DragEvent<HTMLDivElement>) => {
+    //modify state to say that I'm currently dragginn
+    event.dataTransfer.setData('text', entry._id);
+    onDragStated();
+  };
+  const onDragEnd = () => {
+    onDragEnded();
+  };
   return (
-    <Card sx={{ marginBottom: 1 }}>
+    <Card
+      sx={{ marginBottom: 1 }}
+      draggable
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+    >
       <CardActionArea>
         <CardContent>
           <Typography sx={{ whiteSpace: 'pre-line' }}>
