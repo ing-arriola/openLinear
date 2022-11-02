@@ -12,7 +12,7 @@ export const Navbar = () => {
         <IconButton onClick={openSideDrawer}>
           <MenuOutlinedIcon />
         </IconButton>
-        <Typography variant="h6">Dynamic Tasks</Typography>
+        <Typography variant="h6">Open Linear</Typography>
       </Toolbar>
     </AppBar>
   );
